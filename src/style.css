@@ -1,0 +1,150 @@
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #0d1214;
+  color: #fff;
+  font: 1rem/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 0.45);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: var(--photo-color, #0d1214);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.layer.visible {
+  opacity: 1;
+}
+
+.backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(4 8 10 / 0.88) 0%,
+    rgb(4 8 10 / 0.7) 25%,
+    rgb(4 8 10 / 0.35) 55%,
+    rgb(4 8 10 / 0.12) 80%,
+    rgb(4 8 10 / 0.3) 100%
+  );
+}
+
+main,
+footer {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 4.5rem);
+  box-sizing: border-box;
+}
+
+main {
+  padding-block: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 2vw, 1.5rem);
+}
+
+.clock {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+}
+
+.clock div {
+  padding-inline: clamp(0.7rem, 2.4vw, 1.6rem);
+  border-inline-start: 1px solid rgb(255 255 255 / 0.3);
+}
+
+.clock div:first-child {
+  padding-inline-start: 0;
+  border-inline-start: 0;
+}
+
+.clock b {
+  display: block;
+  font: 400 clamp(2.6rem, 10vw, 6rem) / 1 ui-monospace, "SF Mono", Menlo, monospace;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock small {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: clamp(0.58rem, 2.4vw, 0.7rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.8);
+}
+
+.done {
+  margin: 0;
+  font-size: clamp(2.2rem, 8vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.ends {
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  color: rgb(255 255 255 / 0.85);
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0 clamp(1.25rem, 3vw, 2rem);
+  font-size: 0.8rem;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.controls {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.controls button {
+  padding: 0.25rem 0;
+  border: 0;
+  border-bottom: 1px solid rgb(255 255 255 / 0.4);
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  border-bottom-color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: rgb(255 255 255 / 0.45);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    transition: none;
+  }
+}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https://images.pexels.com; style-src 'self' 'unsafe-inline'; base-uri 'self'; form-action 'none'"
+    />
+    <title>Countdown</title>
+    <meta name="theme-color" content="#0d1214" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://images.pexels.com" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <div class="backdrop" id="backdrop">
+      <img class="layer" id="layer-a" alt="" decoding="async" />
+      <img class="layer" id="layer-b" alt="" decoding="async" />
+    </div>
+
+    <main>
+      <div class="clock" id="clock" role="timer">
+        <div><b id="days">--</b><small>days</small></div>
+        <div><b id="hours">--</b><small>hours</small></div>
+        <div><b id="minutes">--</b><small>minutes</small></div>
+        <div><b id="seconds">--</b><small>seconds</small></div>
+      </div>
+      <p class="done" id="done" hidden></p>
+
+      <p class="ends" id="ends"></p>
+    </main>
+
+    <footer>
+      <span id="credit"></span>
+      <div class="controls" id="controls" hidden>
+        <button type="button" id="back">Back</button>
+        <button type="button" id="play">Pause</button>
+        <button type="button" id="next">Next</button>
+      </div>
+    </footer>
+  </body>
+</html>
