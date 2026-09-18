@@ -25,7 +25,9 @@ async function search(apiKey: string, topic: string, page: number): Promise<Sear
 
   if (!response.ok) {
     const reason =
-      response.status === 401 ? "the API key was rejected" : `HTTP ${String(response.status)}`;
+      response.status === 401
+        ? `the API key was rejected (the key this build received is ${String(apiKey.length)} characters; a Pexels key is 56)`
+        : `HTTP ${String(response.status)}`;
     throw new Error(`Pexels search for "${topic}" failed: ${reason}`);
   }
   const body = (await response.json()) as { photos: PexelsPhoto[]; total_results: number };
